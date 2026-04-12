@@ -1,4 +1,4 @@
-name: Repository 1 - Unified Night Cycle (12h Offset) (01:30 PM IST)
+name: Repository 1 - Unified Night Cycle (12h Offset) (01:30 AM IST)
 on:
   schedule:
     - cron: "0 20 * * *"
