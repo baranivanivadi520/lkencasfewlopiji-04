@@ -138,14 +138,6 @@ jobs:
              echo "TARGET_RESTORE_URL=$SESSION_RESTORE_URL_SIX" >> $GITHUB_ENV
           fi
 
-          # Dynamic Artifact Naming (Extract Alias)
-          # Strips the @domain.com to use the clean alias (e.g., 'aldenjadakeisha4')
-          if [ -n "$ACTIVE_ACCOUNT" ] && [ "$ACTIVE_ACCOUNT" != "null" ]; then
-             ALIAS=$(echo "$ACTIVE_ACCOUNT" | cut -d'@' -f1)
-             echo "CUSTOM_ARTIFACT_NAME=${ALIAS}" >> $GITHUB_ENV
-             echo "Generated Custom Artifact Name: ${ALIAS}"
-          fi
-
       - name: Send IP to collector (Ingest)
         continue-on-error: true
         env:
@@ -257,7 +249,7 @@ jobs:
           # '25_days'  = Commit once every 25 days (Very safe buffer)
           # 'monthly'  = Commit once every 30 days
           # 'default'  = Commit once every 50 days (Cleanest history)
-          KEEPALIVE_MODE: '25_days'
+          KEEPALIVE_MODE: 'always'
         run: |
           echo "Checking keepalive policy..."
 
